@@ -55,12 +55,12 @@ public class MainController {
 
 
 
-    private DataService dataService;
+    //private DataService dataService;
 
-	@Autowired
-	public MainController(DataService dataService) {
-		this.dataService = dataService;
-	}
+//	@Autowired
+//	public MainController(DataService dataService) {
+//		this.dataService = dataService;
+//	}
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String defaultPage(ModelMap map) {

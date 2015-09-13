@@ -37,7 +37,7 @@
                 <div id="wrapper">
                     <div id="register" class="animate form">
                         <%--<form id="registerForm"  method="POST" action="<c:url value='/register'/>?${_csrf.parameterName}=${_csrf.token}" autocomplete="on" enctype="multipart/form-data">--%>
-                        <form id="registerForm"  method="POST" action="<c:url value='/register'/>" autocomplete="on" enctype="multipart/form-data">
+                        <form id="registerForm"  method="POST" action="<c:url value='/register?_csrf=${_csrf.token}'/>" autocomplete="on" enctype="multipart/form-data">
                             <input type="hidden" name="${_csrf.parameterName}"   value="${_csrf.token}"/>
 
                             <h1> Register </h1>
