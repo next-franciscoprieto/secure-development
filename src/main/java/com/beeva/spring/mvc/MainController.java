@@ -137,8 +137,8 @@ public class MainController {
 
 	@RequestMapping(value = "/register", method = RequestMethod.POST, consumes = { MediaType.MULTIPART_FORM_DATA_VALUE})
 	public String registerUser(HttpServletRequest httpRequest, HttpServletResponse httpResponse,
-                              @ModelAttribute("registerForm") @Valid RegisterForm inputData,
-                              @RequestParam("file") MultipartFile file)
+                              @ModelAttribute("registerForm") @Valid RegisterForm inputData
+                              ,@RequestParam("file") MultipartFile file)
                               throws MethodArgumentNotValidException {
 
 		HttpStatus status = HttpStatus.OK;
