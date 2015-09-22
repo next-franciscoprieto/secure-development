@@ -17,10 +17,6 @@
 	<meta name="keywords" content="html5, css3, form, switch, animation, :target, pseudo-class" />
 	<meta name="author" content="Codrops" />
 
-    <meta name="_csrf_parameter" content="_csrf" />
-    <meta name="_csrf" content="${_csrf.token}"/>
-    <meta name="_csrf_header" content="${_csrf.headerName}"/>
-
 	<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/demo.css'/>"/>
 	<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/style.css'/>"/>
 	<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/animate-custom.css'/>"/>
@@ -36,7 +32,6 @@
             <div id="container_demo">
                 <div id="wrapper">
                     <div id="register" class="animate form">
-                        <%--<form id="registerForm"  method="POST" action="<c:url value='/register'/>?${_csrf.parameterName}=${_csrf.token}" autocomplete="on" enctype="multipart/form-data">--%>
                         <form id="registerForm"  method="POST" action="<c:url value='/register?${_csrf.parameterName}=${_csrf.token}'/>" autocomplete="on" enctype="multipart/form-data">
 
                             <h1> Register </h1>
