@@ -54,7 +54,6 @@ a.hiddenanchor{
 	color: rgb(6, 106, 117);
 	padding: 2px 0 10px 0;
 	font-family: 'FranchiseRegular','Arial Narrow',Arial,sans-serif;
-	font-weight: bold;
 	text-align: center;
 	padding-bottom: 30px;
 }
@@ -316,7 +315,7 @@ p.change_link{
 #toregister:target ~ #wrapper #register,
 #tologin:target ~ #wrapper #login{
 	z-index: 22;
-	-webkit-animation-name: fadeInLeft;
+	-webkit-animation-name: fadeInLeft;lo
 	-moz-animation-name: fadeInLeft;
 	-ms-animation-name: fadeInLeft;
 	-o-animation-name: fadeInLeft;

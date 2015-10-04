@@ -64,7 +64,7 @@ public class MainController {
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String defaultPage(ModelMap map) {
-		return "redirect:/menu";
+		return "redirect:/login";
 	}
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
@@ -88,10 +88,10 @@ public class MainController {
 		return "denied";
 	}
 	
-	@RequestMapping(value = "/menu", method = RequestMethod.GET)
+	@RequestMapping(value = "/messages", method = RequestMethod.GET)
 	public String menu(ModelMap map) {
 		
-		return "menu";
+		return "messages";
 	}
 	
 	@RequestMapping(value = "/listUsers", method = RequestMethod.GET)
