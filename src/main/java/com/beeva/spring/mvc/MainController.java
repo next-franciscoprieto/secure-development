@@ -5,19 +5,19 @@
 package com.beeva.spring.mvc;
 
 
+import com.beeva.mongodb.form.MessageData;
+import com.beeva.mongodb.form.MessageForm;
 import com.beeva.mongodb.form.RegisterForm;
-import com.beeva.mongodb.model.Campaign;
-import com.beeva.mongodb.service.DataService;
+import com.beeva.mongodb.service.Service;
 import org.apache.log4j.Logger;
 import org.owasp.esapi.errors.ValidationException;
 import org.owasp.esapi.reference.DefaultValidator;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -49,17 +49,23 @@ public class MainController {
     private static final String JPEG_IMAGE_EXTENSION = "jpeg";
     private static final String JPG_IMAGE_EXTENSION = "jpg";
     private static final String PNG_IMAGE_EXTENSION = "png";
+
     public static final int TAMANIO_MAXIMO_BYTES = 10485760;
     public static final String FILE_UPLOAD_CONTEXT = "upload_image";
     private static final String TMP_FOLDER = "tmp";
 
-
-
-    private DataService dataService;
+    private Service service;
+    private List<String> whiteListExtension;
 
 	@Autowired
-	public MainController(DataService dataService) {
-		this.dataService = dataService;
+	public MainController(Service service) {
+		this.service = service;
+
+        whiteListExtension =  new ArrayList<>();
+        whiteListExtension.add(PNG_IMAGE_EXTENSION);
+        whiteListExtension.add(JPG_IMAGE_EXTENSION);
+        whiteListExtension.add(JPEG_IMAGE_EXTENSION);
+        whiteListExtension.add(GIF_IMAGE_EXTENSION);
 	}
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
@@ -89,41 +95,30 @@ public class MainController {
 	}
 	
 	@RequestMapping(value = "/messages", method = RequestMethod.GET)
-	public String menu(ModelMap map) {
-		
+	public String messages(ModelMap map) {
+
+        List<MessageData> messages = service.getAllMessage();
+		map.addAttribute("messages", messages);
 		return "messages";
 	}
-	
-	@RequestMapping(value = "/listUsers", method = RequestMethod.GET)
-	public String listUsers(ModelMap map) {
-		
-		//Iterable<User> users= userRepositoryDao.findAll();
-		//map.addAttribute("users", users);
-		
-		return "listUsers";
-	}
-	
-	@RequestMapping(value = "/listCampaigns", method = RequestMethod.GET)
-	public String listCampaigns(ModelMap map) {
-		
-		map.addAttribute("new_campaign", new Campaign());
-		//Iterable<Campaign> campaings= campaignRepositoryDao.findAll();
-		//map.addAttribute("campaigns",campaings);
-		
-		return "listCampaigns";
-	}
-	
-	@PreAuthorize("hasRole('ROLE_CAMPAIGN')")
-	@RequestMapping(value = "/addCampaing", method = RequestMethod.POST)
-	public String addCampaign(@ModelAttribute(value = "new_campaign") Campaign new_campaign,
-			BindingResult result){
-		
-		//new_campaign.setId(UUID.randomUUID().toString());
-		//campaignRepositoryDao.save(new_campaign);
-		
-		return "redirect:/listCampaigns";
-	}
 
+    @RequestMapping(value = "/message", method = RequestMethod.GET)
+    public String message(ModelMap map) {
+
+        return "message";
+    }
+
+    @RequestMapping(value = "/publish", method = RequestMethod.POST, consumes = { MediaType.APPLICATION_FORM_URLENCODED_VALUE})
+    public String registerUser(HttpServletRequest httpRequest, HttpServletResponse httpResponse,
+                               @ModelAttribute("messageForm") @Valid MessageForm inputData)
+            throws MethodArgumentNotValidException {
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String userId = auth.getName(); //get logged in username
+
+        service.publishMessage (userId, inputData);
+        return "redirect:/messages";
+    }
 
 	/**
 	 * EndPoint para subir imagenes
@@ -137,11 +132,10 @@ public class MainController {
 
 	@RequestMapping(value = "/register", method = RequestMethod.POST, consumes = { MediaType.MULTIPART_FORM_DATA_VALUE})
 	public String registerUser(HttpServletRequest httpRequest, HttpServletResponse httpResponse,
-                              @ModelAttribute("registerForm") @Valid RegisterForm inputData,
-                              @RequestParam("file") MultipartFile file)
+                              @ModelAttribute("registerForm") @Valid RegisterForm inputData
+                              ,@RequestParam("file") MultipartFile file)
                               throws MethodArgumentNotValidException {
 
-		HttpStatus status = HttpStatus.OK;
 		String name;
 
 		try {
@@ -149,7 +143,6 @@ public class MainController {
 			if (file.isEmpty()) {
 
 			}
-			//name = SecUtils.encryptSHA1(file.getOriginalFilename() + System.currentTimeMillis());
             name = file.getOriginalFilename();
 			// Se valida la imagen subida a traves de OWAPS
 			validateInputFile(file, name);
@@ -160,22 +153,18 @@ public class MainController {
 				// It's an image (only BMP, GIF, JPG and PNG are recognized).
 				if (image == null) {
 
-					status = HttpStatus.BAD_REQUEST;
-
 				} else {
 
+                    service.registerUser(name, image, inputData);
 				}
 			} catch (Exception e) {
 
 				logger.error("Invalid file upload type :" + e.getMessage());
-
-				status = HttpStatus.BAD_REQUEST;
 			}
 
 		} catch (Exception e1) {
 
 			logger.error("File Upload :" + e1.getMessage());
-
 		}
 
         return "login";
@@ -192,13 +181,6 @@ public class MainController {
     public void validateInputFile(MultipartFile file, String name) throws IOException, ValidationException {
 
         DefaultValidator validator = new DefaultValidator();
-
-        List<String> whiteListExtension = new ArrayList<>();
-
-        whiteListExtension.add(PNG_IMAGE_EXTENSION);
-        whiteListExtension.add(JPG_IMAGE_EXTENSION);
-        whiteListExtension.add(JPEG_IMAGE_EXTENSION);
-        whiteListExtension.add(GIF_IMAGE_EXTENSION);
 
         File tempFile = File.createTempFile(name, TMP_FOLDER);
 

@@ -20,14 +20,15 @@
 	<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/demo.css'/>"/>
 	<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/style.css'/>"/>
 	<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/animate-custom.css'/>"/>
+    <link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/bootstrap.min.css'/>"/>
 
 
 </head>
 <body>
-<div class="container">
+<div>
 	<section>
-		<div id="container_demo" >
-			<div id="wrapper">
+		<div>
+			<div id="wrapper" class="col-sm-offset-3 col-sm-6 col-md-offset-3 col-md-6 col-lg-offset-3 col-lg-6">
 				<div id="login" class="animate form">
 					<form name='loginForm' action="<c:url value='/login' />" method='POST'>
 						<input type="hidden" name="${_csrf.parameterName}"   value="${_csrf.token}"/>
@@ -41,10 +42,7 @@
 							<label for="password" class="youpasswd" data-icon="p"> Your password </label>
 							<input id="password" name="password" required="required" type="password" placeholder="eg. X8df!90EO" />
 						</p>
-						<p class="keeplogin">
-							<input type="checkbox" name="loginkeeping" id="loginkeeping" value="loginkeeping" />
-							<label for="loginkeeping">Keep me logged in</label>
-						</p>
+
 						<p class="login button">
 							<input type="submit" value="Login" />
 						</p>

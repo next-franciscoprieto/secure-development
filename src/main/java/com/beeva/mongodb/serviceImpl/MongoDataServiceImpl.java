@@ -1,13 +1,18 @@
 package com.beeva.mongodb.serviceImpl;
 
+import com.beeva.mongodb.model.Message;
 import com.beeva.mongodb.model.User;
 import com.beeva.mongodb.service.DataService;
 import com.beeva.mongodb.service.MongoEntity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 /**
  *
@@ -37,6 +42,27 @@ public class MongoDataServiceImpl implements DataService {
 
         logger.debug("Load Data in " + clazz + " id:" + id);
         return (MongoEntity) mongoTemplate.findById(id, clazz);
+    }
+
+    @Override
+    public void saveUser (User user){
+
+        mongoTemplate.save(user);
+    }
+
+    @Override
+    public void saveMessage(Message message) {
+
+        mongoTemplate.save(message);
+    }
+
+    @Override
+    public List<Message> getMessage() {
+
+        Query query = new Query();
+        query.with(new Sort(Sort.Direction.DESC, "date"));
+
+        return mongoTemplate.find(query, Message.class);
     }
 
 }

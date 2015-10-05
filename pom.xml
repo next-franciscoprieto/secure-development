@@ -11,7 +11,7 @@
     <properties>
 
         <WAR_NAME>secure</WAR_NAME>
-        <ruta.despliegue.wars>/opt/tomcat/webapps</ruta.despliegue.wars>
+        <ruta.despliegue.wars>target</ruta.despliegue.wars>
 
     </properties>
     <repositories>

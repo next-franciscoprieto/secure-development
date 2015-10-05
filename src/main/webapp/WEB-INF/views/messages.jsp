@@ -49,7 +49,7 @@
                     <a href="#page-top"></a>
                 </li>
                 <li class="page-scroll">
-                    <a aria-label="Left Align" href="#contact">  <span class="glyphicon glyphicon-log-out"
+                    <a aria-label="Left Align" href="<c:url value='/logout' />"><span class="glyphicon glyphicon-log-out"
                                                                        aria-hidden="true"></span></a>
                 </li>
             </ul>
@@ -68,77 +68,35 @@
     <div class="container">
         <div class="row">
             <!-- start left bar content -->
-            <div class=" col-sm-12 col-md-12 col-lg-12">
+            <div class="col-sm-12 col-md-12 col-lg-12">
                 <div class="row">
                     <div class="leftbar_content">
 
                         <div class="col-sm-2 col-sm-offset-10 col-md-offset-10 col-md-2 col-lg-offset-10 col-lg-2" style="visibility: visible; animation-name: fadeInDown;">
-                            <input type="button" value="+" class="message_button">
+                            <input type="button" value="+" class="message_button" onclick="location='<c:url
+                            value='/message' />'">
                         </div>
 
-                        <div style="visibility: visible; animation-name: fadeInDown;" class="single_stuff wow fadeInDown animated animated">
-                            <div class="single_sarticle_inner message_text">
-                                <a class="stuff_category" href="#">Technology</a>
-                                <div class="stuff_article_inner">
-                                    <span class="stuff_date">Nov <strong>17</strong></span>
-                                    <h2><a href="#">Duis quis erat non nunc fringilla</a></h2>
-                                    <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a pharetra urna. Morbi dui lectus, pharetra nec elementum eget, vulputate ut nisi. Aliquam accumsan, nulla sed feugiat vehicula...</p>
-                                </div>
-                             </div>
-                        </div>
-
-                        <!-- start single stuff post -->
-                        <div style="visibility: visible;" class="single_stuff wow fadeInDown animated animated">
-
+                        <c:forEach var="message"  items="${messages}"  varStatus="status">
+                            <div style="visibility: visible; animation-name: fadeInDown;" class="single_stuff wow fadeInDown animated animated">
                                 <div class="single_sarticle_inner message_text">
+                                    <span class="stuff_date">${message.month} <strong>${message.day}</strong></span>
                                     <a class="stuff_category" href="#">Technology</a>
                                     <div class="stuff_article_inner">
-                                        <span class="stuff_date">Nov <strong>17</strong></span>
-                                        <h2><a href="#">Duis quis erat non nunc fringilla</a></h2>
-                                        <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a pharetra urna. Morbi dui lectus, pharetra nec elementum eget, vulputate ut nisi. Aliquam accumsan, nulla sed feugiat vehicula...</p>
+                                        <span class="stuff_image"><img width="75" height="75" class="img-circle"
+                                                                      src="<c:url
+                                                                      value='/images/'/>${message.image}"></span>
+
+                                        <h2><a href="#">${message.title}</a></h2>
+                                        <p>${message.body}</p>
+
                                     </div>
-                                </div>
-                        </div>
-                        <!-- End single stuff post -->
-
-                        <!-- start single stuff post -->
-                        <div style="visibility: visible;" class="single_stuff wow fadeInDown animated animated">
-
-                                <div class="single_sarticle_inner message_text">
-                                    <a class="stuff_category" href="#">Technology</a>
-                                    <div class="stuff_article_inner">
-                                        <span class="stuff_date">Nov <strong>17</strong></span>
-                                        <h2><a href="#">Duis quis erat non nunc fringilla</a></h2>
-                                        <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a pharetra urna. Morbi dui lectus, pharetra nec elementum eget, vulputate ut nisi. Aliquam accumsan, nulla sed feugiat vehicula...</p>
-                                    </div>
-                                </div>
-
-                        </div>
-                        <!-- End single stuff post -->
-
-                        <!-- start single stuff post -->
-                        <div style="visibility: visible;" class="single_stuff wow fadeInDown animated animated">
-
-                            <div class="single_sarticle_inner message_text">
-                                <a class="stuff_category" href="#">Technology</a>
-                                <div class="stuff_article_inner">
-                                    <span class="stuff_date">Nov <strong>17</strong></span>
-                                    <h2><a href="#">Duis quis erat non nunc fringilla</a></h2>
-                                    <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a pharetra urna. Morbi dui lectus, pharetra nec elementum eget, vulputate ut nisi. Aliquam accumsan, nulla sed feugiat vehicula...</p>
-                                </div>
+                                 </div>
                             </div>
-                        </div>
-                        <!-- End single stuff post -->
+                        </c:forEach>
                     </div>
                 </div>
             </div>
-            <!-- End left bar content -->
-
-            <!-- start middle bar content -->
-
-            <!-- End middle bar content -->
-
-
         </div>
     </div>
 </section>

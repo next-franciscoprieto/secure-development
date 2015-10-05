@@ -11,9 +11,7 @@ public class User implements MongoEntity {
 	@Id
 	private String email;
 	private String name;
-	private String surname;
-	private int age;
-	private String username;
+    private String image;
 	private String password;
 	private int role;
 
@@ -21,71 +19,43 @@ public class User implements MongoEntity {
 		super();		
 	}
 
-	public User(String email, String name, String surname, String username,
-			String password, int role) {
-		super();
-		this.email = email;
-		this.name = name;
-		this.surname = surname;
-		this.username = username;
-		this.password = password;
-		this.role = role;
-	}
+    public String getEmail() {
+        return email;
+    }
 
-	public String getEmail() {
-		return email;
-	}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public String getImage() {
+        return image;
+    }
 
-	public String getSurname() {
-		return surname;
-	}
+    public void setImage(String image) {
+        this.image = image;
+    }
 
-	public void setSurname(String surname) {
-		this.surname = surname;
-	}
+    public String getPassword() {
+        return password;
+    }
 
-	public int getAge() {
-		return age;
-	}
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
-	public void setAge(int age) {
-		this.age = age;
-	}
+    public int getRole() {
+        return role;
+    }
 
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public int getRole() {
-		return role;
-	}
-
-	public void setRole(int role) {
-		this.role = role;
-	}
-
+    public void setRole(int role) {
+        this.role = role;
+    }
 }

@@ -14,16 +14,15 @@
 	<global-method-security pre-post-annotations="enabled"  />
 
 	<!-- secure the application´s urls with the specific Role -->
-	<http auto-config="false"  use-expressions="true" >
+	<http auto-config="false"  use-expressions="true">
 
 		<intercept-url pattern="/login" access="permitAll" method="POST"/>
 		<intercept-url pattern="/logout" access="permitAll" />
         <intercept-url pattern="/register" access="permitAll" />
 		<intercept-url pattern="/accessdenied" access="permitAll" />
 
-		<intercept-url pattern="/listCampaigns" access="hasAnyRole('ROLE_ADMIN','ROLE_CAMPAIGN')" />
-		<intercept-url pattern="/listUsers" access="hasRole('ROLE_ADMIN')" />
-		<intercept-url pattern="/messages" access="hasAnyRole('ROLE_ADMIN','ROLE_CAMPAIGN')" />
+		<intercept-url pattern="/message" access="hasAnyRole('ROLE_ADMIN','ROLE_FORUM')" />
+        <intercept-url pattern="/publish" access="hasAnyRole('ROLE_ADMIN','ROLE_FORUM')" />
 
 		<!--<session-management invalid-session-url="/login?time=1">-->
 			<!--<concurrency-control max-sessions="1" expired-url="/login?time=1" />-->
@@ -41,7 +40,7 @@
 	     to validate the user access, and the password enconding -->
 	<authentication-manager alias="authenticationManager">
 		<authentication-provider user-service-ref="mongoUserDetailsService">
-			<password-encoder hash="plaintext" />
+			<password-encoder hash="sha" />
 		</authentication-provider>
 	</authentication-manager>
          

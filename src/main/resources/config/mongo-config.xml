@@ -30,6 +30,10 @@
 			<constructor-arg name="mongoDbFactory" ref="mongoDbFactory" />
 		</bean>
 
+    <bean id="service" class="com.beeva.mongodb.serviceImpl.ServiceImpl">
+        <constructor-arg name="dataService" ref="dataService" />
+    </bean>
+
     <bean id="dataService" class="com.beeva.mongodb.serviceImpl.MongoDataServiceImpl">
         <constructor-arg name="mongoTemplate" ref="mongoTemplate" />
     </bean>

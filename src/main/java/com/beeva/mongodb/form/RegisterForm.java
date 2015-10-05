@@ -6,6 +6,8 @@ import org.hibernate.validator.constraints.Email;
 import java.io.Serializable;
 
 public class RegisterForm implements Serializable {
+
+	private static final long serialVersionUID = -6063993380423834607L;
 	@Name
 	private String name;
 	@Email

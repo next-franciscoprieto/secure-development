@@ -35,15 +35,15 @@ public class MongoUserDetailsService implements UserDetailsService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 
         boolean enabled = true;
         boolean accountNonExpired = true;
         boolean credentialsNonExpired = true;
         boolean accountNonLocked = true;
-        com.beeva.mongodb.model.User user = getUserDetail(username);
+        com.beeva.mongodb.model.User user = getUserDetail(email);
 
-        return new User(user.getUsername(),
+        return new User(user.getEmail(),
                 user.getPassword(),
                 enabled,
                 accountNonExpired,
@@ -58,9 +58,8 @@ public class MongoUserDetailsService implements UserDetailsService {
             authList.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
 
         } else if (role.intValue() == 2) {
-            authList.add(new SimpleGrantedAuthority("ROLE_CAMPAIGN"));
+            authList.add(new SimpleGrantedAuthority("ROLE_FORUM"));
         }
-        System.out.println(authList);
         return authList;
     }
 

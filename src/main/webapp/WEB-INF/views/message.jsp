@@ -11,7 +11,7 @@
 <head>
 	<meta charset="UTF-8" />
 	<!-- <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">  -->
-	<title>Register</title>
+	<title>Message</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="Desarrollo Seguro" />
 	<meta name="keywords" content="html5, css3, form, switch, animation, :target, pseudo-class" />
@@ -32,35 +32,20 @@
             <div>
                 <div id="wrapper" class="col-sm-offset-3 col-sm-6 col-md-offset-3 col-md-6 col-lg-offset-3 col-lg-6">
                     <div id="register" class="animate form">
-                        <form id="registerForm"  method="POST" action="<c:url value='/register?${_csrf.parameterName}=${_csrf.token}'/>" autocomplete="on" enctype="multipart/form-data">
+                        <form id="messageForm"  method="POST" action="<c:url
+                        value='/publish?${_csrf.parameterName}=${_csrf.token}'/>" autocomplete="on">
 
-                            <h1> Register </h1>
+                            <h1> Publish message </h1>
                             <p>
-                                <label for="name" class="uname" data-icon="u">Your name</label>
-                                <input id="name" name="name" required="required" type="text" placeholder="John Doe" />
+                                <label for="title" class="title" data-icon="u">Your title</label>
+                                <input id="title" name="title" required="required" type="text" placeholder="" />
                             </p>
                             <p>
-                                <label for="email" class="youmail" data-icon="e" > Your email</label>
-                                <input id="email" name="email" required="required" type="email" placeholder="user@beeva.com"/>
+                                <label for="message" class="body" data-icon="e"> Your message</label>
+                                <textarea class="form-control" rows="7" id="message" name="message"></textarea>
                             </p>
-                            <p>
-                                <label for="pass" class="youpasswd" data-icon="p">Your password </label>
-                                <input id="pass" name="pass" required="required" type="password" placeholder="eg. X8df!90EO"/>
-                            </p>
-                            <p>
-                                <label for="pass1" class="youpasswd" data-icon="p">Please confirm your password </label>
-                                <input id="pass1" name="pass1" required="required" type="password"  placeholder="eg. X8df!90EO"/>
-                            </p>
+                            <p class="signin button"><input type="submit" value="Publish"/></p>
 
-                            <p>
-                                <label class="control-label">Select file</label>
-                                <input id="file" name="file" type="file" class="file" data-show-preview="false" >
-                            </p>
-                            <p class="signin button"><input type="submit" value="Register"/></p>
-                            <p class="change_link">
-                                Already a member ?
-                                <a href="<c:url value='/login' />" class="to_register">log in </a>
-                            </p>
                         </form>
                     </div>
 
