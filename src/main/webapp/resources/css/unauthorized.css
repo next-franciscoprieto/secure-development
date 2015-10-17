@@ -1,0 +1,128 @@
+*::before, *::after {
+    box-sizing: border-box;
+}
+*::before, *::after {
+    box-sizing: border-box;
+}
+img {
+    height: auto;
+    max-width: 100%;
+}
+img {
+    vertical-align: middle;
+}
+img {
+    border: 0 none;
+}
+
+.message {
+    height: auto;
+    max-width: 100%;
+}
+.message {
+    font-size: 40px;
+    margin-left: -2px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+@media screen and (min-width: 480px) {
+    .message {
+        width: 350px;
+        margin-left: 42px;
+        top: 0%;} }
+@media screen and (min-width: 768px) {
+    .message {
+        width: 450px;
+        margin-left: 64px;
+        top: 0%; } }
+@media screen and (min-width: 1200px) {
+    .message {
+        top: 0%; } }
+
+.container {
+  position: absolute;
+  width: 250px;
+  left: 50%;
+  margin-left: -145px;
+  z-index: 130;
+  top: 22%;}
+  @media screen and (min-width: 480px) {
+    .container {
+      width: 350px;
+      margin-left: -200px;
+      top: 0%;} }
+  @media screen and (min-width: 768px) {
+    .container {
+      width: 450px;
+      margin-left: -225px;
+      top: 0%; } }
+  @media screen and (min-width: 1200px) {
+    .container {
+      top: 0%; } }
+
+.eye {
+  width: 31.2949640288%;
+  position: absolute;
+  left: 48.0215827338%;
+  top: 46.449% }
+@media screen and (min-width: 480px) {
+    .eye {
+        top: 42.449%;} }
+@media screen and (min-width: 768px) {
+    .eye {
+        top: 39.449%; } }
+@media screen and (min-width: 1200px) {
+    .eye {
+        top: 39.449%; } }
+
+.hand {
+  width: 33.0935251799%;
+  left: 0.439%;
+  top: 32.228%;
+  position: absolute;
+  -webkit-transform-origin: 77.1739130435% 73.8341968912%;
+          transform-origin: 77.1739130435% 73.8341968912%;
+  -webkit-animation: hand6 2s linear 0s infinite;
+          animation: hand6 2s linear 0s infinite; }
+@media screen and (min-width: 480px) {
+    .hand {
+        top: 26.228%;} }
+@media screen and (min-width: 768px) {
+    .hand {
+        left: 1.439%;
+        top: 24.228%; } }
+@media screen and (min-width: 1200px) {
+    .hand {
+        top: 24.228%;
+    }}
+
+@-webkit-keyframes hand6 {
+  25% {
+    -webkit-transform: rotate(5deg);
+            transform: rotate(5deg); }
+
+  50% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg); }
+
+  75% {
+    -webkit-transform: rotate(-5deg);
+            transform: rotate(-5deg); } }
+
+@keyframes hand6 {
+    25% {
+        -webkit-transform: rotate(5deg);
+        transform: rotate(5deg);
+    }
+
+    50% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    75% {
+        -webkit-transform: rotate(-5deg);
+        transform: rotate(-5deg);
+    }
+}

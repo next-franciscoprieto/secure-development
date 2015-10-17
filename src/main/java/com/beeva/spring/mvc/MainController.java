@@ -89,8 +89,7 @@ public class MainController {
 	}
 	
 	@RequestMapping(value = "/accessdenied")
-	public String loginerror(ModelMap model) {
-		model.addAttribute("error", "true");
+	public String denied(ModelMap model) {
 		return "denied";
 	}
 	

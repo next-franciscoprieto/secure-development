@@ -22,7 +22,7 @@ import static java.lang.annotation.ElementType.FIELD;
 @Size(max = Message.MAX)
 public @interface Message {
 
-	int MAX = 5000;
+	int MAX = 10000;
 
 	/**
 	 * @return

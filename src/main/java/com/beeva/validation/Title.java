@@ -22,7 +22,7 @@ import static java.lang.annotation.ElementType.FIELD;
 @Size(max = Title.MAX)
 public @interface Title {
 
-	int MAX = 1024;
+	int MAX = 2000;
 
 	/**
 	 * @return

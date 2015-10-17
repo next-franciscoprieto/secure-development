@@ -58,15 +58,7 @@ a.hiddenanchor{
 	padding-bottom: 30px;
 }
 /** For the moment only webkit supports the background-clip:text; */
-#wrapper h1{
-    background: -webkit-repeating-linear-gradient(-45deg, 
-	rgb(18, 83, 93) , 
-	rgb(18, 83, 93) 20px, 
-	rgb(64, 111, 118) 20px, 
-	rgb(64, 111, 118) 40px, 
-	rgb(18, 83, 93) 40px);
-	-webkit-text-fill-color: transparent;
-}
+
 #wrapper h1:after{
 	content: ' ';
 	display: block;
@@ -109,6 +101,7 @@ input {
 
 /* all the input except submit and checkbox */
 #wrapper input:not([type="checkbox"]){
+    background: rgba(238, 236, 240, 0.2) none repeat scroll 0 0;
 	width: 92%;
 	margin-top: 4px;
 	padding: 10px 5px 10px 32px;	

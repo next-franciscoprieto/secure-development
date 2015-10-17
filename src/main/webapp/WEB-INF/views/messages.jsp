@@ -33,7 +33,7 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body style="overflow: visible;">
+<body style="overflow: visible;background-color: rgba(208, 223, 226, 0.4)">
 
 <nav class="navbar navbar-default navbar-fixed-top navbar-shrink message_header">
     <div class="container">

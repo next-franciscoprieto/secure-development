@@ -24,7 +24,7 @@
 
 
 </head>
-<body>
+<body style="background-color: rgba(208, 223, 226, 0.4)">
 <div>
 	<section>
 		<div>

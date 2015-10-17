@@ -24,10 +24,6 @@
 		<intercept-url pattern="/message" access="hasAnyRole('ROLE_ADMIN','ROLE_FORUM')" />
         <intercept-url pattern="/publish" access="hasAnyRole('ROLE_ADMIN','ROLE_FORUM')" />
 
-		<!--<session-management invalid-session-url="/login?time=1">-->
-			<!--<concurrency-control max-sessions="1" expired-url="/login?time=1" />-->
-		<!--</session-management>-->
-
 		<session-management>
 			<concurrency-control max-sessions="1" error-if-maximum-exceeded="true" />
 		</session-management>
