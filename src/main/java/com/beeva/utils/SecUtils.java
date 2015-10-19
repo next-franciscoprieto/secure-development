@@ -21,51 +21,6 @@ public class SecUtils implements Serializable {
 
 	private static Logger logger = LoggerFactory.getLogger(SecUtils.class);
 
-	/** Default context name for security logging purposes **/
-	private static final String DEFAULT_CONTEXT = "defaultContext";
-	/** Default string validation kind (see validation.properties) **/
-	private static final String DEFAULT_VALIDATION_KIND = "SafeString";
-
-	private static final int INPUT_MAX_LENGTH = 9999;
-	public static final int INPUT_MAX_PASSWORD = 20;
-
-	public static final String ACCESS_TOKEN_GENERAL = "access_token";
-
-	public static final String USERNAME = "username";
-	public static final String ACCESS_TOKEN_USUARIO = ACCESS_TOKEN_GENERAL;
-	public static final String ACCESS_TOKEN_APP = ACCESS_TOKEN_GENERAL;
-	public static final String HTTP_PARAM_IV_USER = "iv_user";
-	public static final String HTTP_PARAM_IV_APP = "iv_application";
-
-	// CODIGO DE COMERCIO EN REDSYS PARA CTT ASTURIAS (via TELEFONICA)
-	public static final String IV_APP_TFN_CTA = "1";
-
-	public static final String REGISTER_USER_ATTR_AT = ACCESS_TOKEN_GENERAL;
-	public static final String REGISTER_USER_ATTR_BU = "back_url";
-
-	public static final String AUTHORIZE_PARAM_RESPONSE_TYPE = "response_type";
-	public static final String AUTHORIZE_PARAM_CLIENT_ID = "client_id";
-	public static final String AUTHORIZE_PARAM_REDIRECT_URI = "redirect_uri";
-	public static final String AUTHORIZE_PARAM_SCOPE = "scope";
-	public static final String AUTHORIZE_PARAM_STATE = "state";
-
-	public static final String AT_PARAM_GRANT_TYPE = "grant_type";
-	public static final String AT_PARAM_GRANT_TYPE_VALUE = "client_credentials";
-	public static final String AUTHORIZE_PARAM_SCOPE_VALUE = "read";
-	public static final String AT_PARAM_CODE = "code";
-	public static final String AT_PARAM_REDIRECT_URI = "redirect_uri";
-	public static final String AT_PARAM_BEARER = "bearer";
-
-	public static final String USER_SESSION_ATTR_AT = ACCESS_TOKEN_GENERAL;
-	public static final String USER_SESSION_ATTR_BU = "back_url";
-
-	public static final String CHANGE_PASS_USERID = "userid";
-	public static final String CHANGE_PASS_NEWPASS = "newpass";
-	public static final String CHANGE_PASSWORD_FIELDS_RESULT_OK = "CHANGE_PASS_OK";
-	public static final String CHANGE_PASSWORD_FIELDS_RESULT_KO = "CHANGE_PASS_KO";
-
-	public static final String LOGOUT_ATTR_BU = "back_url";
-
 	/**
 	 * 
 	 */
@@ -176,9 +131,9 @@ public class SecUtils implements Serializable {
 			crypt.update(str.getBytes("UTF-8"));
 			sha1 = byteToHex(crypt.digest());
 		} catch (NoSuchAlgorithmException e) {
-			logger.error("PCI-COMMON SHA-1 Hashing exception: " + e.getMessage());
+			logger.error("SHA-1 Hashing exception: " + e.getMessage());
 		} catch (UnsupportedEncodingException e) {
-			logger.error("PCI-COMMON SHA-1 Hashing exception: " + e.getMessage());
+			logger.error(" SHA-1 Hashing exception: " + e.getMessage());
 		}
 		return sha1;
 	}

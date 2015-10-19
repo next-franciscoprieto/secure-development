@@ -33,7 +33,8 @@
                 <div id="wrapper" class="col-sm-offset-3 col-sm-6 col-md-offset-3 col-md-6 col-lg-offset-3 col-lg-6">
                     <div id="register" class="animate form">
                         <form id="messageForm"  method="POST" action="<c:url
-                        value='/publish?${_csrf.parameterName}=${_csrf.token}'/>" autocomplete="on">
+                        value='/publish?${_csrf.parameterName}=${_csrf.token}'/>" autocomplete="on"
+                              accept-charset="UTF-8">
 
                             <h1> Publish message </h1>
                             <p>
