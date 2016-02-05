@@ -38,7 +38,7 @@ import java.util.List;
 
 /**
  *
- * @author anjana.m
+ * @author secure development group
  */
 @Controller
 public class MainController {
@@ -108,7 +108,7 @@ public class MainController {
     }
 
     @RequestMapping(value = "/publish", method = RequestMethod.POST, consumes = { MediaType.APPLICATION_FORM_URLENCODED_VALUE})
-    public String registerUser(HttpServletRequest httpRequest, HttpServletResponse httpResponse,
+    public String publishPost(HttpServletRequest httpRequest, HttpServletResponse httpResponse,
                                @ModelAttribute("messageForm") @Valid MessageForm inputData)
             throws MethodArgumentNotValidException {
 
@@ -152,6 +152,7 @@ public class MainController {
 				// It's an image (only BMP, GIF, JPG and PNG are recognized).
 				if (image == null) {
 
+                    logger.error("Invalid file upload type");
 				} else {
 
                     service.registerUser(name, image, inputData);

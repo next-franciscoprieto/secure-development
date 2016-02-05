@@ -1,6 +1,7 @@
 package com.beeva.validation;
 
 import javax.validation.Constraint;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
@@ -20,6 +21,7 @@ import static java.lang.annotation.ElementType.FIELD;
 @Target({ FIELD })
 @Retention(RetentionPolicy.RUNTIME)
 @Size(max = Name.MAX)
+@Pattern(regexp = "^$|([A-Za-z]*)")
 public @interface Name {
 
 	int MAX = 64;

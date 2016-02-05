@@ -11,7 +11,7 @@
 <head>
 	<meta charset="UTF-8" />
 	<!-- <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">  -->
-	<title>Secure development</title>
+	<title>Messages</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="Secure development" />
 	<meta name="keywords" content="html5, css3, form, switch, animation, :target, pseudo-class" />
@@ -74,7 +74,7 @@
 
                         <div class="col-sm-2 col-sm-offset-10 col-md-offset-10 col-md-2 col-lg-offset-10 col-lg-2" style="visibility: visible; animation-name: fadeInDown;">
                             <input type="button" value="+" class="message_button" onclick="location='<c:url
-                            value='/message' />'">
+                                    value='/message' />'">
                         </div>
 
                         <c:forEach var="message"  items="${messages}"  varStatus="status">

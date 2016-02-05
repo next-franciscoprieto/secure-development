@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Unauthorized: Access is denied</title>
+    <title>Bye</title>
     <link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/logout.css'/>"/>
 </head>
 <body style="background-color: rgba(208, 223, 226, 0.4)">

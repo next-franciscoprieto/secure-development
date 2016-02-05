@@ -22,14 +22,18 @@
 		<intercept-url pattern="/accessdenied" access="permitAll" />
 
 		<intercept-url pattern="/message" access="hasAnyRole('ROLE_ADMIN','ROLE_FORUM')" />
+        <intercept-url pattern="/messages" access="hasAnyRole('ROLE_ADMIN','ROLE_FORUM')" />
         <intercept-url pattern="/publish" access="hasAnyRole('ROLE_ADMIN','ROLE_FORUM')" />
+        <!--<intercept-url pattern="/**" access="denyAll"/>-->
 
-		<session-management>
-			<concurrency-control max-sessions="1" error-if-maximum-exceeded="true" />
-		</session-management>
+		<!--<session-management>-->
+			<!--<concurrency-control max-sessions="1" error-if-maximum-exceeded="true" />-->
+		<!--</session-management>-->
 
         <form-login login-page="/login" default-target-url="/messages" authentication-failure-url="/accessdenied"  />
+
 		<logout logout-success-url="/logout" />
+
 	</http>
 
 	<!-- Define the application authentication manager to use a custom Class (mongoUserDetailsService)
