@@ -90,13 +90,13 @@ public class ServiceImpl implements Service {
 
             MessageData sms = new MessageData();
             // FIXME Change to repair security bug
-//            sms.setTitle(SecUtils.encodeForHTML(message.getTitle()));
-//            sms.setBody(SecUtils.encodeForHTML(message.getBody()));
-//            sms.setImage(SecUtils.encodeForHTMLAttribute(user.getImage()));
+            sms.setTitle(SecUtils.encodeForHTML(message.getTitle()));
+            sms.setBody(SecUtils.encodeForHTML(message.getBody()));
+            sms.setImage(SecUtils.encodeForHTMLAttribute(user.getImage()));
 
-            sms.setTitle(message.getTitle());
-            sms.setBody(message.getBody());
-            sms.setImage(user.getImage());
+//            sms.setTitle(message.getTitle());
+//            sms.setBody(message.getBody());
+//            sms.setImage(user.getImage());
 
             sms.setDay(String.valueOf(day));
             sms.setMonth(parseMonth(month));
