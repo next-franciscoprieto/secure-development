@@ -89,9 +89,15 @@ public class ServiceImpl implements Service {
             int day = cal.get(Calendar.DAY_OF_MONTH);
 
             MessageData sms = new MessageData();
-            sms.setTitle(SecUtils.encodeForHTML(message.getTitle()));
-            sms.setBody(SecUtils.encodeForHTML(message.getBody()));
-            sms.setImage(SecUtils.encodeForHTMLAttribute(user.getImage()));
+            // FIXME Change to repair security bug
+//            sms.setTitle(SecUtils.encodeForHTML(message.getTitle()));
+//            sms.setBody(SecUtils.encodeForHTML(message.getBody()));
+//            sms.setImage(SecUtils.encodeForHTMLAttribute(user.getImage()));
+
+            sms.setTitle(message.getTitle());
+            sms.setBody(message.getBody());
+            sms.setImage(user.getImage());
+
             sms.setDay(String.valueOf(day));
             sms.setMonth(parseMonth(month));
 

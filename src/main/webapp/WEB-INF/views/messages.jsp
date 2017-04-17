@@ -23,9 +23,9 @@
     <link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/structure.css'/>"/>
 
     <link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/style.css'/>"/>
+    <link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/google-fonts.css'/>"/>
 
-    <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Varela">
-
+    <!--<link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Varela">-->
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
